@@ -2,6 +2,8 @@ package MediscreenwebApp.model;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Data
@@ -9,11 +11,16 @@ import java.time.LocalDate;
 public class Patient {
 
     private Integer id;
+    @NotBlank(message = "please enter your family")
     private String family;
+    @NotBlank(message = "please enter your given")
     private String given;
     private LocalDate dob;
+    @NotBlank(message = "please enter your gender")
     private String sex;
+    @NotBlank(message = "please enter your address")
     private String address;
+    @NotBlank(message = "please enter your given")
     private String phone;
 
 
