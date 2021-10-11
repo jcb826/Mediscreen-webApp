@@ -28,8 +28,10 @@ class PatientServiceTests {
     }
 
     @Test
-    void createPatientTest() {
+    public void createPatientTest() {
+
         Patient patient = new Patient();
+        patient.setGiven("test");
         patient.setAddress("adress test");
         LocalDate localDate = LocalDate.of(1980, 05, 05);
         patient.setDob(localDate);
@@ -37,18 +39,12 @@ class PatientServiceTests {
         patient.setPhone("6666");
         patient.setSex("male");
 
-        patientService.createPatient(patient);
-        List<Patient> patientLists = patientService.findAllPatients();
-        Patient patient2 = patientLists.stream()
-                .filter(p -> p.getPhone().equals("6666"))
-                .findFirst()
-                .orElseGet(() -> new Patient());
+        Patient patientCreated = patientService.createPatient(patient);
 
-        Assertions.assertEquals("6666", patient2.getPhone());
-        patientService.deletePatient(patient2.getId());
+        Assertions.assertEquals("6666", patientService.findPatientById(patientCreated.getId()).getPhone());
+        patientService.deletePatient(patientCreated.getId());
     }
-
-  @Test
+    @Test
     void findPatientByIdTest() {
         Patient patient = new Patient();
         patient.setAddress("adress test");
@@ -57,12 +53,12 @@ class PatientServiceTests {
         patient.setFamily("nameTest");
         patient.setPhone("5555");
         patient.setSex("male");
-        patientService.createPatient(patient);
+        Patient patientCreated = patientService.createPatient(patient);
 
-        Patient patient2 = patientService.findPatientById(2);
+        Patient patient2 = patientService.findPatientById(patientCreated.getId());
 
         Assertions.assertEquals("5555", patient2.getPhone());
-        patientService.deletePatient(patient2.getId());
+        patientService.deletePatient(patientCreated.getId());
     }
 
     @Test
@@ -74,16 +70,32 @@ class PatientServiceTests {
         patient.setFamily("nameTest");
         patient.setPhone("7777");
         patient.setSex("male");
-        patientService.createPatient(patient);
+        Patient patientCreated = patientService.createPatient(patient);
+        patientCreated.setPhone("8888");
+
+
+        patientService.updatePatient(patientCreated, patientCreated.getId());
+        Patient patientUpdated = patientService.findPatientById(patientCreated.getId());
+
+        Assertions.assertEquals("8888", patientUpdated.getPhone());
+        patientService.deletePatient(patientUpdated.getId());
+    }
+    @Test
+    void deletePatientTest() {
+        Patient patient = new Patient();
+        patient.setAddress("adress test");
+        LocalDate localDate = LocalDate.of(1980, 05, 05);
+        patient.setDob(localDate);
+        patient.setFamily("nameTest");
+        patient.setPhone("7777");
+        patient.setSex("male");
         patient.setPhone("8888");
 
-        patientService.updatePatient(patient, 3);
-        Patient patient2 = patientService.findPatientById(4);
+        Patient patientCreated = patientService.createPatient(patient);
+        patientService.deletePatient(patientCreated.getId());
 
-        Assertions.assertEquals("8888", patient2.getPhone());
-        patientService.deletePatient(patient2.getId());
+        Assertions.assertEquals("8888", patientCreated.getPhone());
+
     }
-
-
 
 }

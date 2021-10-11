@@ -20,9 +20,9 @@ public class PatientService {
     }
 
 
-    public void createPatient(Patient patient) {
+    public Patient createPatient(Patient patient) {
 
-        patientGateway.createPatient(patient);
+       return  patientGateway.createPatient(patient);
     }
 
 

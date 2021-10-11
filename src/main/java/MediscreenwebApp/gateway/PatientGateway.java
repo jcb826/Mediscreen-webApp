@@ -23,9 +23,9 @@ public class PatientGateway {
     }
 
     @SneakyThrows
-    public void createPatient(Patient patient) {
+    public Patient createPatient(Patient patient) {
         HttpEntity<Patient> httpEntity= new HttpEntity<>(patient);
-        restTemplate.postForEntity("http://localhost:8081/patient/add",httpEntity, Patient.class );
+      return   restTemplate.postForEntity("http://localhost:8081/patient/add",httpEntity, Patient.class ).getBody();
     }
     @SneakyThrows
     public ResponseEntity<Patient> findPatientById(Integer id) {
