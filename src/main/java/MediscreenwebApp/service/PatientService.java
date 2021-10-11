@@ -38,9 +38,9 @@ public class PatientService {
 
 
 
-        public void updatePatient(Patient patient, Integer id){
+        public Patient updatePatient(Patient patient, Integer id){
             patient.setId(id);
-            patientGateway.createPatient(patient);
+           return patientGateway.createPatient(patient);
         }
 
         public void deletePatient (Integer id){
