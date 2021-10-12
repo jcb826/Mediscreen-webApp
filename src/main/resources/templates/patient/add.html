@@ -16,31 +16,31 @@
 	<div class="row">
 		<form action="#" th:action="@{/patient/validate}" th:object="${patient}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
-				<label for="family" class="col-sm-2 control-label">Full Name</label>
+				<label for="firstName" class="col-sm-2 control-label">first name</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{family}" id="family" placeholder="family" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('family')}" th:errors="*{family}"></p>
+					<input type="text" th:field="*{firstName}" id="firstName" placeholder="firstName" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="given" class="col-sm-2 control-label">given</label>
+				<label for="lastName" class="col-sm-2 control-label">last name</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{given}" id="given" placeholder="given" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('given')}" th:errors="*{given}"></p>
+					<input type="text" th:field="*{lastName}" id="lastName" placeholder="lastName" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="dob" class="col-sm-2 control-label">day of birth</label>
+				<label for="birthday" class="col-sm-2 control-label">birthday</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{dob}" id="dob" placeholder="dob" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
+					<input type="text" th:field="*{birthday}" id="birthday" placeholder="birthday" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="sex" class="col-sm-2 control-label">sex</label>
+				<label for="gender" class="col-sm-2 control-label">gender</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{sex}" id="sex" placeholder="sex" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></p>
+					<input type="text" th:field="*{gender}" id="gender" placeholder="gender" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
 				</div>
 			</div>
 			<div class="form-group">
